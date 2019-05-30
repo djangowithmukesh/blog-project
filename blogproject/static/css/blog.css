@@ -1,0 +1,44 @@
+body{
+    background-color: red;
+}
+.content{
+    color: white;
+}
+.sidebar{
+    padding: 10px;
+    margin-left: 10px;
+    color: white;
+  
+    background-color: forestgreen;
+}
+h1{
+    text-align: center;
+}
+#date{
+    color: forestgreen;
+    font-size: 15px;
+    font-style: oblique;
+    font: bold;
+}
+#body{
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+    font-style: oblique;
+    font-size: 15px;
+    text-align: justify;
+}
+.comment_header{
+    font-size: 25px;
+    color: black;
+    font-style: oblique;
+    font: bold;
+}
+#c1{
+    font-size: 30px;
+    font-style: italic;
+    color: darkgoldenrod;
+    font: bold;
+}
+li,a{
+    text-decoration:none;
+    color: white;
+}

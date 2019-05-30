@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block title_content %}share post by mail{% endblock %}
+{% block body_content %}
+{% if sent %}
+    <h1>Email Send Successfully!!!</h1><hr>
+    <h2>Post with title:{{ post.title }} shared by Email Successfully</h2>
+    {% else %}
+        <h1>Share {{ post.title }} by mail</h1><hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                     <form method="post">
+                         {% csrf_token %}
+                         {{ form.errors }}
+                         {{ form.name }}
+                         {{ form.email }}
+                         {{ form.to }}
+                         {{ form.comment }}
+                        <input type="submit" value="Share post" class="btn btn-success btn-lg ml-5">
+                     </form>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+
+{% endif %}
+{% endblock %}

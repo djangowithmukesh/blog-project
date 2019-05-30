@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block title_content %}Mukesh Blog Home{% endblock %}
+{% block body_content %}
+    <h1>Mukesh's Blog</h1><hr>
+        <h2>{{ post.title }}</h2>
+        <p id="date">Published On    {{ post.publish }} By {{ post.auther|title }}</p>
+        <p id="body">{{ post.body }}</p><br><br>
+    <div align="center">
+      <a href="/{{ post.id }}/share/" class="btn btn-success btn-lg">Share Post By Email</a>
+    </div>
+    {% with comment.count as comment_count %}
+        <h2 id="c1">{{ comment_count }} Comment{{ comment_count|pluralize }}</h2>
+    {% endwith %}
+    {% if comment %}
+        {% for count in comment %}
+            <h4 class="comment_header">Comment  {{ forloop.counter }}  by {{ count.name }} on {{ count.created}}</h4>
+            <div id="comment-body">
+                {{ count.body }}
+            </div>
+        {% endfor %}
+        {% else %}
+        <h4>There is no Comment Yet</h4>
+    {% endif %}<hr>
+    {% if csubmit %}
+        <h4>Comment Submitted </h4>
+        {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                        <h4>Please Provide your feedback about Post</h4>
+                       <form method="post">
+                           {% csrf_token %}
+                           {{ form.errors }}
+                             {{ form.name }}
+                             {{ form.email }}
+                             {{ form.body}}
+                             <input type="submit" value="Comment" class="btn btn-success m-5">
+                        </form>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
